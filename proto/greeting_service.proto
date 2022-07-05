@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option go_package = ".;pb";
+
+import "proto/greeting_message.proto";
+
+message GreetingRequest {    
+    enum Gender {
+        MALE = 0;
+        FEMALE = 1;
+        OTHER = 2;
+    }
+
+    string name = 1;
+    int32 age = 2;
+    Gender gender = 3;
+    
+}
+
+service GreetingService {
+    rpc Hello(GreetingRequest) returns (Greeting) {};
+}
